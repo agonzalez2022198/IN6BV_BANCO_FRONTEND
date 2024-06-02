@@ -1,7 +1,98 @@
 import React from "react";
-import "./style.css";
+//import "./authPage";
 
-export const Register = () => {
+
+
+
+export const Register = ({ switchAuthHandler }) => {
+  //const { register, isLoading } = useRegister();
+
+  const [formState, setFormState] = useState({
+    email: {
+      value: "",
+      isValid: false,
+      showError: false,
+    },
+    password: {
+      value: "",
+      isValid: false,
+      showError: false,
+    },
+    passwordConfir: {
+      value: "",
+      isValid: false,
+      showError: false,
+    },
+    name: {
+      value: "",
+      isValid: false,
+      showError: false,
+    },
+    lastName: {
+      value: "",
+      isValid: false,
+      showError: false,
+    },
+  });
+
+  const handleInputValueChange = (value, field) => {
+    setFormState((prevState) => ({
+      ...prevState,
+      [field]: {
+        ...prevState[field],
+        value,
+      },
+    }));
+  };
+
+  const handleInputValidationOnBlur = (value, field) => {
+    let isValid = false;
+    switch (field) {
+      case "email":
+        isValid = validateEmail(value);
+        break;
+      case "password":
+        isValid = validatePassword(value);
+        break;
+      case "passwordConfir":
+        isValid = validatePasswordConfir(formState.password.value, value);
+        break;
+      case "name":
+        isValid = validateName(value);
+        break;
+      case "lastName":
+        isValid = validateLastName(value);
+        break;
+      default:
+        break;
+    }
+    setFormState((prevState) => ({
+      ...prevState,
+      [field]: {
+        ...prevState[field],
+        isValid,
+        showError: !isValid,
+      },
+    }));
+  };
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    console.log(formState)
+    register(
+      formState.email.value,
+      formState.password.value,
+      formState.name.value,
+      formState.lastName.value
+    );
+  };
+
+  const isSubmitButtonDisabled =
+    isLoading ||
+    !formState.password.isValid ||
+    !formState.email.isValid ||
+    !formState.name.isValid ||
+    !formState.lastName.isValid;
   return (
     <div className="auth">
       <div className="div">
