@@ -1,0 +1,136 @@
+/* homePage.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #c4dafa;
+}
+
+.div {
+    background: #fcffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 80%;
+    max-width: 900px;
+    padding: 20px;
+}
+
+.overlap-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.content, .content-2 {
+    background: #fcffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.copy {
+    margin-bottom: 20px;
+}
+
+.text-wrapper {
+    font-size: 1.5rem;
+    color: #005187;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.text-wrapper-2 {
+    font-size: 1rem;
+    color: #005187;
+    margin-bottom: 10px;
+}
+
+.text-wrapper-3 {
+    font-size: 1.1rem;
+    color: #005187;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.field, .field-2 {
+    background: #fff;
+    border: 1px solid #84b6f4;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.field-wrapper {
+    margin-bottom: 20px;
+}
+
+.input-and-button {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label {
+    padding: 10px;
+    border: 1px solid #84b6f4;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+}
+
+.button {
+    background-color: #005187;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #84b6f4;
+}
+
+.by-clicking-continue {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.span {
+    color: #666;
+}
+
+.text-wrapper-5 {
+    color: #005187;
+    cursor: pointer;
+}
+
+.text-wrapper-5:hover {
+    text-decoration: underline;
+}
+
+.text-wrapper-6 {
+    text-align: center;
+    font-size: 2rem;
+    color: #005187;
+    font-weight: bold;
+    margin-top: 20px;
+}
