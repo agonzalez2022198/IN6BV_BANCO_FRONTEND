@@ -1,4 +1,3 @@
-import { Register } from "../../components/Register";
 import './authPage.css';
 import React from "react";
 
