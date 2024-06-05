@@ -8,16 +8,16 @@ const apiClient = axios.create({
 
 
 apiClient.interceptors.request.use(
-    (config) =>{
+    (config) => {
         const userDetails = localStorage.getItem('user')
 
-        if(userDetails){
-            const token =  JSON.parse(userDetails).token
+        if (userDetails) {
+            const token = JSON.parse(userDetails).token
             config.headers.Authorization = `Bearer ${token}`
         }
         return config
     },
-    (e) =>{
+    (e) => {
         return Promise.reject(e)
     }
 );
@@ -25,10 +25,22 @@ apiClient.interceptors.request.use(
 //Users
 
 export const register = async (data) => {
-    try{
+    try {
         return await apiClient.post('/auth/register', data)
-    }catch(e){
-        return{
+    } catch (e) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
+
+
+export const getUserById = async (id) => {
+    try {
+        return await apiClient.get('/user/', id);
+    } catch (e) {
+        return {
             error: true,
             e
         }

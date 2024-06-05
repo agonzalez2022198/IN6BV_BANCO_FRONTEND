@@ -1,0 +1,37 @@
+.account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.account-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+}
+
+.account-avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.account-info h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.account-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #777;
+}
