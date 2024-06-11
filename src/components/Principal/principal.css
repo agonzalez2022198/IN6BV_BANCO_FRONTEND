@@ -1,0 +1,48 @@
+.menu {
+    background-color: #00447c;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.menu-toggle button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.menu-items span {
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.menu-items button {
+    background-color: #ff4d4d;
+    border: none;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cuentas {
+    padding: 20px;
+}
+
+.cuentas h2 {
+    color: #00447c;
+}
+
+.cuentas ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cuentas ul li {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}

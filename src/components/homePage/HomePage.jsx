@@ -2,15 +2,20 @@ import React from "react";
 
 export const HomePage = () => {
 
+
+    const PrincipalPage = () => {
+        
+    }
+
     return (
-        <div className="App">
+        <div className="App" style={{ background: '#c4dafa' }}>
             <header className="menu menu2 cid-tJS6tZXiPa" id="menu02-0">
-                <nav className="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg opacityScroll">
+                <nav className="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg opacityScroll" style={{ background: '#005187', color: '#fcffff' }}>
                     <div className="container">
                         <div className="navbar-brand">
                             <span className="navbar-logo">
                                 <a href="https://mobirise.com/">
-                                    <img src="./Home_files/logo.png" alt="Mobirise Website Builder" style={{ height: '3rem' }} />
+                                    <img src="https://kinalbank.slack.com/files/U075GJRGNN6/F075KCYBXT6/kinalbank.png" alt="" style={{ height: '3rem' }} />
                                 </a>
                             </span>
                             <span className="navbar-caption-wrap">
@@ -19,7 +24,7 @@ export const HomePage = () => {
                         </div>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                             <div className="hamburger">
-                                <span></span>
+                                <span>Ingles</span>
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -49,7 +54,7 @@ export const HomePage = () => {
             </header>
 
             <section className="header5 cid-tJS6uM4N87" id="header05-1">
-                <div className="topbg"></div>
+                <div className="topbg" style={{ background: '#84b6f4' }}></div>
                 <div className="align-center container">
                     <div className="row justify-content-center">
                         <div className="col-md-12 col-lg-9"></div>
@@ -61,10 +66,10 @@ export const HomePage = () => {
             <section className="form5 cid-tJS9pBcTSa" id="form02-6">
                 <div className="container">
                     <div className="mbr-section-head mb-5">
-                        <h3 className="mbr-section-title mbr-fonts-style align-center mb-0 display-2 animate__animated animate__delay-1s animate__fadeIn">
+                        <h3 className="mbr-section-title mbr-fonts-style align-center mb-0 display-2 animate__animated animate__delay-1s animate__fadeIn" style={{ color: '#fcffff' }}>
                             <strong>KINALBANK</strong>
                         </h3>
-                        <h4 className="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-7 animate__animated animate__delay-1s animate__fadeIn">
+                        <h4 className="mbr-section-subtitle mbr-fonts-style align-center mb-0 mt-4 display-7 animate__animated animate__delay-1s animate__fadeIn" style={{ color: '#fcffff' }}>
                             <div>KINALBANK Cerca de ti!!</div>
                         </h4>
                     </div>
@@ -99,3 +104,5 @@ export const HomePage = () => {
         </div>
     );
 }
+
+export default HomePage;
