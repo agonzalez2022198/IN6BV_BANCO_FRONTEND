@@ -6,7 +6,9 @@ export const Principal = () => {
     <div>
       <nav className="menu">
         <div className="menu-toggle">
-          <button>&#9776;</button>
+          <select>&#9776;
+            <option value="Rojo"></option>
+          </select>
         </div>
         <div className="menu-items">
           <span>Cuentas</span>
