@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export const HomePage = () => {
 
+    const navigate = useNavigate();
 
     const PrincipalPage = () => {
-        
+        navigate("/Principal");
     }
 
     return (
@@ -91,7 +93,7 @@ export const HomePage = () => {
                                         <textarea name="textarea" placeholder="Contraseña" data-form-field="textarea" className="form-control" id="textarea-form02-6"></textarea>
                                     </div>
                                     <div className="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
-                                        <button type="submit" className="btn btn-primary display-7">
+                                        <button type="submit" className="btn btn-primary display-7" onClick={PrincipalPage}>
                                             <span className="mobi-mbri mobi-mbri-login mbr-iconfont mbr-iconfont-btn"></span>Iniciar Sesión
                                         </button>
                                     </div>

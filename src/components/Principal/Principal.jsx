@@ -1,7 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./principal.css";
 
 export const Principal = () => {
+
+  const navigate = useNavigate();
+
+  const GoToTransfer = () => {
+    navigate('/Transfer');
+  }
+
   return (
     <div>
       <nav className="menu">
@@ -31,7 +39,7 @@ export const Principal = () => {
                 <p>Saldo: Q5000</p>
                 <p>Saldo disponible</p>
                 <div className="buttons">
-                  <button>Transferir</button>
+                  <button onClick={GoToTransfer}>Transferir</button>
                   <button>Pagar</button>
                   <button className="options-btn">
                     <strong>...</strong>
