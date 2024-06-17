@@ -1,12 +1,14 @@
 import React from "react";
 import { Link, Routes, Route } from "react-router-dom";
 import './principalAdmin.css';
+import { AddCliente } from "../AddCliente/AddCliente";
+import { VerClientes } from "../AddCliente/VerCliente";
 
 const PrincipalAdmin = () => {
     return (
         <div className="admin-container">
             <aside className="sidebar">
-                <h2>KIBANK  ADMIN</h2>
+                <h2>KIBANK ADMIN</h2>
                 <nav>
                     <ul>
                         <li><Link to="/PrincipalAdminPage/addCliente">Añadir Cliente</Link></li>
@@ -30,10 +32,8 @@ const PrincipalAdmin = () => {
             </main>
         </div>
     );
-}
+};
 
-const AddCliente = () => <div>Añadir Cliente</div>;
-const VerClientes = () => <div>Ver Clientes</div>;
 const AddTipoCuenta = () => <div>Añadir Tipos de Cuenta</div>;
 const VerRegistrosPersona = () => <div>Ver Registros de una Persona</div>;
 const VerRegistrosVariasPersonas = () => <div>Ver Registros de Varias Personas</div>;
