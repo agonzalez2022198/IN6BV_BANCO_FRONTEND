@@ -3,6 +3,7 @@ import { Link, Routes, Route } from "react-router-dom";
 import './principalAdmin.css';
 import { AddCliente } from "../AddCliente/AddCliente";
 import { VerClientes } from "../AddCliente/VerCliente";
+import { CreateAccount } from "../BankAccount/BankAccount";
 
 const PrincipalAdmin = () => {
     return (
@@ -16,7 +17,7 @@ const PrincipalAdmin = () => {
                         <li><Link to="/PrincipalAdminPage/addTipoCuenta">Añadir Tipos de Cuenta</Link></li>
                         <li><Link to="/PrincipalAdminPage/verRegistrosPersona">Ver Registros de una Persona</Link></li>
                         <li><Link to="/PrincipalAdminPage/verRegistrosVariasPersonas">Ver Registros de Varias Personas</Link></li>
-                        <li><Link to="/PrincipalAdminPage/editar">Editar Más</Link></li>
+                        <li><Link to="/PrincipalAdminPage/Cuenta">Cuentas</Link></li>
                     </ul>
                 </nav>
             </aside>
@@ -27,7 +28,7 @@ const PrincipalAdmin = () => {
                     <Route path="/addTipoCuenta" element={<AddTipoCuenta />} />
                     <Route path="/verRegistrosPersona" element={<VerRegistrosPersona />} />
                     <Route path="/verRegistrosVariasPersonas" element={<VerRegistrosVariasPersonas />} />
-                    <Route path="/editar" element={<Editar />} />
+                    <Route path="/cuenta" element={<CreateAccount />} />
                 </Routes>
             </main>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useAddUser } from "../../shared/hooks/useAddUser";
 import "./addCliente.css";
 
 export const AddCliente = () => {
@@ -22,6 +22,8 @@ export const AddCliente = () => {
         state: true
     });
 
+    const { addUser, loading, error } = useAddUser(); // Usa el hook useAddUser
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -33,27 +35,32 @@ export const AddCliente = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://your-api-endpoint.com/api/users', formData); // Reemplaza con tu URL de backend
-            alert("Cliente registrado con éxito");
-            navigate("/PrincipalAdminPage/verClientes");
+            const response = await addUser(formData); // Llama a la función addUser del hook useAddUser para enviar los datos al API
+            if (!response.error) {
+                alert("Cliente registrado con éxito");
+                navigate("/PrincipalAdminPage/verClientes");
+            } else {
+                console.error("Error registrando el cliente:", response.e);
+                alert("Hubo un error al registrar el cliente");
+            }
         } catch (error) {
             console.error("Error registrando el cliente:", error);
             alert("Hubo un error al registrar el cliente");
         }
     };
 
-    return(
+    return (
         <div className="add-client-container">
             <h1>Add New Client To KIBANK</h1>
             <div className="form-navigation">
-                <button 
-                    className={`nav-button ${currentPart === 1 ? 'active' : ''}`} 
+                <button
+                    className={`nav-button ${currentPart === 1 ? 'active' : ''}`}
                     onClick={() => setCurrentPart(1)}
                 >
                     Parte 1
                 </button>
-                <button 
-                    className={`nav-button ${currentPart === 2 ? 'active' : ''}`} 
+                <button
+                    className={`nav-button ${currentPart === 2 ? 'active' : ''}`}
                     onClick={() => setCurrentPart(2)}
                 >
                     Parte 2
@@ -123,7 +130,8 @@ export const AddCliente = () => {
                         </div>
                     </div>
                 )}
-                <button type="submit">Registrar Cliente</button>
+                <button type="submit" disabled={loading}>Registrar Cliente</button>
+                {error && <p>Error: {error.message}</p>}
             </form>
         </div>
     );

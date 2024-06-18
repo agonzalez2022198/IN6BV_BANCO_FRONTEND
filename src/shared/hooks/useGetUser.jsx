@@ -1,44 +1,34 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { getUserById as datesUser } from "../../services/api.jsx";
-import { getUser } from "../../services/api.jsx";
+import { getUser as getAllUsers } from "../../services/api.jsx";
 
 export const useGetUser = () => {
-    const [userData, setUserData] = useState({});
+    const [userData, setUserData] = useState({ user: [], total: 0 });
+    const [isFetching, setIsFetching] = useState(false);
 
-    const getUser = async (isLogged = false) => {
-        const response = await datesUser();
+    const getUserData = async () => {
+        setIsFetching(true);
+        const response = await getAllUsers();
 
         if (response.error) {
-            return toast.error(
-                response.e?.response?.data || "Error occurred"
-            );
-        }
-
-        if (!isLogged) {
+            toast.error(response.e?.response?.data || "Error occurred");
+        } else {
             setUserData({
-                user: response.data.user,
+                user: response.data.users, // Assuming response.data contains an array of users
                 total: response.data.total,
             });
         }
+        setIsFetching(false);
     };
 
-
     useEffect(() => {
-        getUser();
+        getUserData();
     }, []);
 
-    
-
     return {
-        getUser,
-        isFetching: !Boolean(userData.user.length),
+        getUser: getUserData,
+        isFetching,
         userD: userData.user,
         howManyUser: userData.total,
     };
-}
-
-
-export const getAllUsers = () => {
-
-}
+};
