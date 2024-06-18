@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { getUserById as datesUser } from "../../services/api.jsx";
+import { getUser } from "../../services/api.jsx";
 
 export const useGetUser = () => {
     const [userData, setUserData] = useState({});
@@ -35,4 +36,9 @@ export const useGetUser = () => {
         userD: userData.user,
         howManyUser: userData.total,
     };
+}
+
+
+export const getAllUsers = () => {
+
 }

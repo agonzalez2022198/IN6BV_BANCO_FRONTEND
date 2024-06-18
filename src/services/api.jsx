@@ -58,3 +58,15 @@ export const login = async (data) => {
         }
     }
 }
+
+
+export const getUser = async () => {
+    try {
+        return await apiClient.get('/user/');
+    } catch (e) {
+        return {
+            error: true,
+            e
+        }
+    }
+}
