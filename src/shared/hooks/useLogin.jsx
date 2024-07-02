@@ -1,40 +1,33 @@
-import { login } from "../../services/api";
 import { useState } from "react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { login as loginRequest } from "../../services/api";
+import toast from "react-hot-toast";
 
-
-export const useLogin = () =>{
-    const [login, setLogin] = useState(false);
-    const [loginDetails, setLoginDetails] = useState(null);
+export const useLogin = () => {
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
-    const login2 = async(correo, password) => {
-        setLogin(true)
-
-        console.log(correo, password)
-
-        const response = await login({
-            correo, password
+    const login = async (email, password) => {
+        setIsLoading(true);
+        const response = await loginRequest({
+            email,
+            password
         });
-
-        setLogin(false)
-        if(response.error){
+        setIsLoading(false);
+        if (response.error) {
             return toast.error(
-                response.e?.response?.data || 'Have a error to start sesion'
-            )
+                response.e?.response?.data || 'Ocurrió un error al iniciar sesión'
+            );
         }
-
-        const { loginDetails } = response.data;
-        setLoginDetails(loginDetails);
-
-        localStorage.setItem('Login', JSON.stringify(loginDetails))
-
-        navigate('/Principal')
-    } 
+        const { userDetails } = response.data;
+        localStorage.setItem('user', JSON.stringify(userDetails));
+        console.log({ userDetails }, "user");
+        navigate('/Principal');
+    };
 
     return {
-        login2, 
-        loginDetails
-    }
-}
+        login,
+        isLoading
+    };
+};

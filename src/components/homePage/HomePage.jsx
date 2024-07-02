@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Login } from "../Login";
 export const HomePage = () => {
 
     const navigate = useNavigate();
@@ -82,22 +82,7 @@ export const HomePage = () => {
                                     <div hidden data-form-alert="" className="alert alert-success col-12">Thanks for filling out the form!</div>
                                     <div hidden data-form-alert-danger="" className="alert alert-danger col-12">Oops...! some problem!</div>
                                 </div>
-                                <div className="dragArea row">
-                                    <div className="col-md col-sm-12 form-group mb-3" data-for="email">
-                                        <input type="email" name="email" placeholder="Código" data-form-field="email" className="form-control" id="email-form02-6" />
-                                    </div>
-                                    <div className="col-12 form-group mb-3" data-for="phone">
-                                        <input type="tel" name="phone" placeholder="Usuario" data-form-field="phone" className="form-control" id="phone-form02-6" />
-                                    </div>
-                                    <div className="col-12 form-group mb-3" data-for="textarea">
-                                        <textarea name="textarea" placeholder="Contraseña" data-form-field="textarea" className="form-control" id="textarea-form02-6"></textarea>
-                                    </div>
-                                    <div className="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
-                                        <button type="submit" className="btn btn-primary display-7" onClick={PrincipalPage}>
-                                            <span className="mobi-mbri mobi-mbri-login mbr-iconfont mbr-iconfont-btn"></span>Iniciar Sesión
-                                        </button>
-                                    </div>
-                                </div>
+                                <Login/>
                             </form>
                         </div>
                     </div>
@@ -108,3 +93,17 @@ export const HomePage = () => {
 }
 
 export default HomePage;
+/*<div className="dragArea row">
+                                <div className="col-md col-sm-12 form-group mb-3" data-for="email">
+                                        <input type="email" name="email" placeholder="Email" data-form-field="email" className="form-control" id="email-form02-6" />
+                                    </div>
+                                    
+                                    <div className="col-12 form-group mb-3" data-for="textarea">
+                                        <textarea name="textarea" placeholder="Contraseña" data-form-field="textarea" className="form-control" id="textarea-form02-6"></textarea>
+                                    </div>
+                                    <div className="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn">
+                                        <button type="submit" className="btn btn-primary display-7" onClick={PrincipalPage}>
+                                            <span className="mobi-mbri mobi-mbri-login mbr-iconfont mbr-iconfont-btn"></span>Iniciar Sesión
+                                        </button>
+                                    </div>
+                                </div>*/
