@@ -75,3 +75,8 @@ body {
     margin-top: -15px;
     margin-bottom: 10px;
 }
+
+.auth-form-logo-container {
+    font-size: 26px;
+    font-weight: bold;
+}
