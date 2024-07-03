@@ -14,7 +14,7 @@ export const useGetUser = () => {
             toast.error(response.e?.response?.data || "Error occurred");
         } else {
             setUserData({
-                user: response.data.users, // Assuming response.data contains an array of users
+                user: response.data.users, 
                 total: response.data.total,
             });
         }
