@@ -68,7 +68,6 @@ export const Login = () =>{
 
     return(
         <div className="login-container">
-            
             <form className="auth-form">
                 <Input
                     field='correo'
