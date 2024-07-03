@@ -70,3 +70,15 @@ export const getUser = async () => {
         }
     }
 }
+
+
+export const addTransfer = async ({ account, amount, comment }) => {
+    try {
+        return await apiClient.post('/transfer', { account, amount, comment });
+    } catch (e) {
+        return {
+            error: true,
+            e,
+        };
+    }
+};

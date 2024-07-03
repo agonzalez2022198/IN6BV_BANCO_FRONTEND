@@ -1,0 +1,68 @@
+.TransferContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #007bff, #343a40);
+}
+
+.FormContainer {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid #e0e0e0;
+}
+
+.Header {
+    text-align: center;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.Form {
+    display: flex;
+    flex-direction: column;
+}
+
+.FormGroup {
+    margin-bottom: 20px;
+}
+
+.Label {
+    margin-bottom: 10px;
+    color: #343a40;
+    font-weight: bold;
+}
+
+.Input {
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 1px solid #6c757d;
+    outline: none;
+    color: #343a40;
+}
+
+.Textarea {
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 1px solid #6c757d;
+    outline: none;
+    color: #343a40;
+}
+
+.Button {
+    padding: 15px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 10px;
+}
