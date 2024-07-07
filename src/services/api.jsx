@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const apiClient = axios.create({
-    baseURL: 'http://127.0.0.1:8080/bank/v1/',
+    baseURL: 'http://127.0.0.1:8080/bank/v1',
     timeout: 5000
 });
 
@@ -72,13 +72,26 @@ export const getUser = async () => {
 }
 
 
-export const addTransfer = async ({ account, amount, comment }) => {
+export const addTransfer = async (data) => {
     try {
-        return await apiClient.post('/transfer', { account, amount, comment });
+        return await apiClient.post('/deposito/depo', data);
     } catch (e) {
+        console.error('Error in API call:', e.response ? e.response.data : e.message);
         return {
             error: true,
-            e,
-        };
+            e
+        }
     }
-};
+}
+
+
+export const getTransfer = async () => {
+    try {
+        return await apiClient.get('/deposito/')
+    }catch(e){
+        return {
+            error: true,
+            e
+        }
+    }
+}

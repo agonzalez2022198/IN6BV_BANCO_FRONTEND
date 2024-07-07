@@ -1,16 +1,18 @@
 import React from 'react';
 import './transfer.css';
-import useTransfer from '../../shared/hooks/useAddTransfer';
+import useTransfer from '../../shared/hooks/useAddTransfer.jsx';
 
 export const Transfer = () => {
     const {
         account,
-        amount,
+        accountRecibe,
+        monto,
         comment,
         error,
         isLoading,
         isSuccess,
-        handleAccountChange,
+        handleSenderAccountChange,
+        handleRecipientAccountChange,
         handleAmountChange,
         handleCommentChange,
         handleSubmit,
@@ -22,14 +24,26 @@ export const Transfer = () => {
                 <h2 className="Header">Realizar Transacción</h2>
                 <form className="Form" onSubmit={handleSubmit}>
                     <div className="FormGroup">
-                        <label className="Label" htmlFor="account">Cuenta a Acreditar</label>
+                        <label className="Label" htmlFor="senderAccount">Cuenta de Envío</label>
                         <input
                             className="Input"
                             type="text"
-                            id="account"
+                            id="senderAccount"
                             value={account}
-                            onChange={handleAccountChange}
-                            placeholder="Número de cuenta"
+                            onChange={handleSenderAccountChange}
+                            placeholder="Número de cuenta de envío"
+                            required
+                        />
+                    </div>
+                    <div className="FormGroup">
+                        <label className="Label" htmlFor="recipientAccount">Cuenta a Acreditar</label>
+                        <input
+                            className="Input"
+                            type="text"
+                            id="recipientAccount"
+                            value={accountRecibe}
+                            onChange={handleRecipientAccountChange}
+                            placeholder="Número de cuenta a acreditar"
                             required
                         />
                     </div>
@@ -39,7 +53,7 @@ export const Transfer = () => {
                             className="Input"
                             type="number"
                             id="amount"
-                            value={amount}
+                            value={monto}
                             onChange={handleAmountChange}
                             placeholder="Monto a transferir"
                             required
