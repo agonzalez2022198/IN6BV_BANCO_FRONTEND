@@ -23,6 +23,15 @@ apiClient.interceptors.request.use(
 );
 
 //Users
+export const getAccountUser = async ()=>{
+    try {
+        return await apiClient.get('/bank-accounts')
+    } catch (error) {
+        error: true,
+        error
+    }
+}
+
 
 export const register = async (data) => {
     try {
