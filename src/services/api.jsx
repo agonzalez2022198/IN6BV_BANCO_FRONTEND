@@ -88,8 +88,21 @@ export const addTransfer = async (data) => {
 export const getTransfer = async () => {
     try {
         return await apiClient.get('/deposito/')
-    }catch(e){
+    }catch(e){  
         return {
+            error: true,
+            e
+        }
+    }
+}
+
+//Account
+
+export const addAccount = async (data) => {
+    try {
+        return await apiClient.post("/account/acc", data);
+    } catch (e) {
+        return{
             error: true,
             e
         }
