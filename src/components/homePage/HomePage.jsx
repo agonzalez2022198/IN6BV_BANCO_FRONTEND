@@ -82,8 +82,8 @@ export const HomePage = () => {
                                     <div hidden data-form-alert="" className="alert alert-success col-12">Thanks for filling out the form!</div>
                                     <div hidden data-form-alert-danger="" className="alert alert-danger col-12">Oops...! some problem!</div>
                                 </div>
-                                <Login/>
                             </form>
+                            <Login/>
                         </div>
                     </div>
                 </div>

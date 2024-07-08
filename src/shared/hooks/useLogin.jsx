@@ -8,10 +8,10 @@ export const useLogin = () => {
 
     const navigate = useNavigate();
 
-    const login = async (email, password) => {
+    const login = async (correo, password) => {
         setIsLoading(true);
         const response = await loginRequest({
-            email,
+            correo,
             password
         });
         setIsLoading(false);
@@ -23,7 +23,7 @@ export const useLogin = () => {
         const { userDetails } = response.data;
         localStorage.setItem('user', JSON.stringify(userDetails));
         console.log({ userDetails }, "user");
-        navigate('/Principal');
+        navigate('/Principal',{state: {correo}});
     };
 
     return {
