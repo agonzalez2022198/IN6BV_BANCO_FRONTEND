@@ -1,49 +1,16 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import apiClient from "./apiClient"; // Asumiendo que tienes un cliente API configurado
+import React from "react";
+import { useCreateAccount } from "../../shared/hooks/useCreateAccount.jsx";
 import "./bankAccount.css";
 
 export const CreateAccount = () => {
-    const [formData, setFormData] = useState({
-        accountNumber: "",
-        typeAccount: "",
-        dpi: "",
-        money: ""
-    });
-
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitError, setSubmitError] = useState(null);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-
-        try {
-            const response = await apiClient.post("/account/acc", formData);
-            console.log("Respuesta del servidor:", response.data);
-            // Aquí puedes manejar la respuesta del servidor según tus necesidades
-        } catch (error) {
-            console.error("Error al enviar los datos:", error);
-            setSubmitError(error);
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
-
-    useEffect(() => {
-        if (submitError) {
-            // Aquí puedes manejar el error de envío, por ejemplo, mostrar un mensaje al usuario
-            console.error("Error en la creación de la cuenta:", submitError);
-        }
-    }, [submitError]);
+    const {
+        formData,
+        isSubmitting,
+        submitError,
+        submitSuccess,
+        handleChange,
+        handleSubmit
+    } = useCreateAccount();
 
     return (
         <div className="create-account-container">
@@ -99,6 +66,8 @@ export const CreateAccount = () => {
                 <button type="submit" disabled={isSubmitting}>
                     {isSubmitting ? "Creando..." : "Crear Cuenta Bancaria"}
                 </button>
+                {submitError && <p className="error">Error al crear la cuenta: {submitError.message}</p>}
+                {submitSuccess && <p className="success">Cuenta creada exitosamente: {submitSuccess.message}</p>}
             </form>
         </div>
     );
