@@ -3,6 +3,7 @@ import { useCreateAccount } from "../../shared/hooks/useCreateAccount.jsx";
 import "./bankAccount.css";
 
 export const CreateAccount = () => {
+    
     const {
         formData,
         isSubmitting,
