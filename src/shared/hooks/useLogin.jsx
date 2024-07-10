@@ -1,40 +1,46 @@
-import { login } from "../../services/api";
 import { useState } from "react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { login as loginRequest } from "../../services/api";
+import toast from "react-hot-toast";
 
-
-export const useLogin = () =>{
-    const [login, setLogin] = useState(false);
-    const [loginDetails, setLoginDetails] = useState(null);
-
+export const useLogin = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
-    const login2 = async(correo, password) => {
-        setLogin(true)
-
-        console.log(correo, password)
-
-        const response = await login({
-            correo, password
+    const login = async (correo, password) => {
+        setIsLoading(true);
+        const response = await loginRequest({
+            correo,
+            password
         });
-
-        setLogin(false)
-        if(response.error){
+        setIsLoading(false);
+        if (response.error) {
             return toast.error(
-                response.e?.response?.data || 'Have a error to start sesion'
-            )
+                response.e?.response?.data || 'Ocurrió un error al iniciar sesión'
+            );
         }
 
-        const { loginDetails } = response.data;
-        setLoginDetails(loginDetails);
+        const { token, userDetails } = response.data;
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(userDetails));
 
-        localStorage.setItem('Login', JSON.stringify(loginDetails))
+        const userRole = userDetails.role;
 
-        navigate('/Principal')
-    } 
+        console.log('Rol del usuario:', userRole);
+
+        // Verifica el rol del usuario y redirige a la página correspondiente
+        if (userRole === 'ADMIN_ROLE') {
+            navigate('/PrincipalAdminPage', { state: { correo } });
+        } else if (userRole === 'USER_ROLE') {
+            navigate('/Principal', { state: { correo } });
+        } else {
+            // Manejar otros roles o errores
+            toast.error('Rol de usuario no reconocido');
+        }
+    };
 
     return {
-        login2, 
-        loginDetails
-    }
-}
+        login,
+        isLoading
+    };
+};

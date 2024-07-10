@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const apiClient = axios.create({
-    baseURL: 'http://127.0.0.1:8080/bank/v1',
+    baseURL: 'http://127.0.0.1:8080/bank/v1/',
     timeout: 5000
 });
 
@@ -23,6 +23,15 @@ apiClient.interceptors.request.use(
 );
 
 //Users
+export const getAccountUser = async () => {
+    try {
+        const response = await apiClient.get('/account/bank-accounts');
+        return response.data; 
+    } catch (error) {
+        throw error;
+    }
+};
+
 
 export const register = async (data) => {
     try {
