@@ -78,6 +78,7 @@ const UpdateCliente = () => {
                 </label>
                 <label>
                     Correo:
+                    
                     <input
                         type="email"
                         name="correo"
