@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { getTransfer} from "../../services/api.jsx"
+import { getTransfer, getUserById } from "../../services/api";
+
 export const useGetTransfer = () => {
   const [transfers, setTransfers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,9 +11,18 @@ export const useGetTransfer = () => {
       try {
         const response = await getTransfer();
         if (!response.error) {
-          setTransfers(response.data);
+          const transfersWithUserNames = await Promise.all(response.data.map(async (transfer) => {
+            try {
+              const userResponse = await getUserById(transfer.idUser);
+              return { ...transfer, userName: userResponse.name };
+            } catch (userError) {
+              console.error('Error fetching user:', userError);
+              return { ...transfer, userName: 'Desconocido' };
+            }
+          }));
+          setTransfers(transfersWithUserNames);
         } else {
-          setError(response.e);
+          setError(response.error);
         }
       } catch (error) {
         setError(error);

@@ -47,12 +47,13 @@ export const register = async (data) => {
 
 export const getUserById = async (id) => {
     try {
-        return await apiClient.get('/user/id', id);
+      const response = await apiClient.get(`/user/${id}`);
+      return response.data; 
     } catch (e) {
-        return {
-            error: true,
-            e
-        }
+      return {
+        error: true,
+        e
+      }
     }
 }
 
@@ -67,6 +68,8 @@ export const login = async (data) => {
         }
     }
 }
+
+
 
 
 export const getUser = async () => {
@@ -129,3 +132,4 @@ export const EditUser = async (data) => {
         }
     }
 }
+

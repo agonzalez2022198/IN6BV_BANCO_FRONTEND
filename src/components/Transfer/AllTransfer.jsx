@@ -35,7 +35,7 @@ export const TransferList = () => {
               <td>{transfer.monto}</td>
               <td>{new Date(transfer.date).toLocaleDateString()}</td>
               <td>{transfer.revertido ? 'Sí' : 'No'}</td>
-              <td>{transfer.idUser}</td>
+              <td>{transfer.userName}</td>
               <td>{transfer.accountRecibe}</td>
               <td>{transfer.comment}</td>
             </tr>
