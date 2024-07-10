@@ -36,9 +36,10 @@ export const register = async (data) => {
 }
 
 
-export const getUserById = async (id) => {
+export const getUserById = async (dpi) => {
+    console.log(dpi);
     try {
-        return await apiClient.get('/user/id', id);
+        return await apiClient.get(`/user/id/${dpi}`);
     } catch (e) {
         return {
             error: true,

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useGetUser } from "../../shared/hooks/useGetUser";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./verCliente.css";
 
 export const VerClientes = () => {
@@ -81,8 +82,11 @@ export const VerClientes = () => {
                                 <td>{cliente.correo}</td>
                                 <td>{cliente.celular}</td>
                                 <td>
-                                    <Link to={`/PrincipalAdminPage/editar-cliente/${cliente._id}`} state={{ clienteId: cliente._id }}>
-                                        <button className="edit-button">
+                                    <Link to={`/PrincipalAdminPage/editar-cliente/${cliente.DPI}`}>
+                                        <button
+                                            className="edit-button"
+                                            onClick={() => localStorage.setItem('clienteId', cliente.DPI)}
+                                        >
                                             Editar
                                         </button>
                                     </Link>
