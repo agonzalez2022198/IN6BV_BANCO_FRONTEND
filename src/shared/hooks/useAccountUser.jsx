@@ -4,7 +4,7 @@ import { getAccountUser } from '../../services/api';
 
 export const useAccountUser = () => {
     const [accounts, setAccounts] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [userName, setUserName] = useState('');
     const navigate = useNavigate();
@@ -14,17 +14,17 @@ export const useAccountUser = () => {
             setIsLoading(true);
             try {
                 const data = await getAccountUser();
-                console.log('Fetched accounts:', data);
+                console.log('Fetched accounts:', data); // Verifica los datos recibidos desde el backend
                 if (Array.isArray(data)) {
                     setAccounts(data);
                     if (data.length > 0) {
-                        setUserName(data[0].user.name);
+                        setUserName(data[0]?.user?.name); // Acceso seguro para evitar errores
                     }
                 } else {
                     setAccounts([]);
                 }
             } catch (error) {
-                console.error('Error fetching bank accounts:', error);
+                console.error('Error fetching bank accounts:', error); // Muestra cualquier error al obtener datos
                 setError(error);
                 if (error.response && error.response.status === 401) {
                     navigate('/login');
@@ -36,6 +36,11 @@ export const useAccountUser = () => {
 
         fetchBankAccounts();
     }, [navigate]);
+
+    useEffect(() => {
+        console.log('Accounts state:', accounts); // Verifica el estado actual de accounts
+        console.log('User Name state:', userName); // Verifica el estado actual de userName
+    }, [accounts, userName]);
 
     return { 
         accounts, 

@@ -1,15 +1,16 @@
-
 import React from 'react';
 import { useNavigate } from "react-router-dom";
+import { useAccountUser } from '../../shared/hooks/useAccountUser';
 import "./principal.css";
-import { useAccountUser } from '../../shared/hooks/useAccountUser.jsx';
 
 export const Principal = () => {
   const navigate = useNavigate();
   const { accounts, isLoading, error, userName } = useAccountUser();     
 
-  const GoToTransfer = () => {
-    navigate('/Transfer');
+  const handleLogout = () => {
+    // Aquí deberías implementar la lógica para cerrar sesión
+    // Por ejemplo, limpiar el token de sesión y redirigir al usuario a la página de inicio de sesión.
+    navigate('/login');
   };
 
   console.log('Accounts:', accounts);
@@ -33,13 +34,13 @@ export const Principal = () => {
         <div className="menu-items">
           <span>Cuentas</span>
           <span>Información de la cuenta</span>
-          <button type="button">Cerrar sesión</button>
+          <button type="button" onClick={handleLogout}>Cerrar sesión</button>
         </div>
       </nav>
   
       <div className="cuentas">
         <h2>Mis Cuentas</h2>
-        <h3>Usuario: {userName}</h3> {/* Mostrar el nombre del usuario */}
+        <h3>Usuario: {userName}</h3>
         {accounts.length === 0 ? (
           <p>No hay cuentas bancarias</p>
         ) : (
@@ -58,3 +59,4 @@ export const Principal = () => {
     </div>
   );
 };
+
