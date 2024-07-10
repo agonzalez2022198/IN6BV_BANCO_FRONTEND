@@ -6,6 +6,7 @@ import { VerClientes } from "../AddCliente/VerCliente"; // Verificar esta import
 import { CreateAccount } from "../BankAccount/BankAccount";
 import { AllTransferPage } from "../../pages/Transfer/AllTransferPage";
 import { UpdateCliente } from "../AddCliente/UpdateCliente";
+import { ListarAccount } from "../BankAccount/ListarAccount";
 
 const PrincipalAdmin = () => {
     const [expandedSections, setExpandedSections] = useState({
@@ -41,7 +42,7 @@ const PrincipalAdmin = () => {
                             <button onClick={() => toggleSection('cuenta')}>Cuenta</button>
                             {expandedSections.cuenta && (
                                 <ul>
-                                    <li><Link to="/PrincipalAdminPage/seeAccounts">Ver cuentas</Link></li>
+                                    <li><Link to="/PrincipalAdminPage/ListarAccount">Ver cuentas</Link></li>
                                     <li><Link to="/PrincipalAdminPage/Cuenta">AddAccount</Link></li>
                                 </ul>
                             )}
@@ -72,6 +73,7 @@ const PrincipalAdmin = () => {
                     <Route path="/addCliente" element={<AddCliente />} />
                     <Route path="/verClientes" element={<VerClientes />} />
                     <Route path="/seeAccounts" element={<AddTipoCuenta />} />
+                    <Route path="/listarAccount" element={<ListarAccount/>}/>
                     <Route path="/verDepositos" element={<AllTransferPage />} />
                     <Route path="/verRegistrosVariasPersonas" element={<VerRegistrosVariasPersonas />} />
                     <Route path="/cuenta" element={<CreateAccount />} />

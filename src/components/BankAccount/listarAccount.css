@@ -1,0 +1,45 @@
+.listar-account {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .listar-account h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .listar-account ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .listar-account li {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .listar-account li p {
+    margin: 5px 0;
+  }
+  
+  .listar-account li:nth-child(even) {
+    background-color: #e3f2fd; /* Azul claro */
+  }
+  
+  .listar-account li:hover {
+    background-color: #bbdefb; /* Azul más claro al hacer hover */
+  }
+  
+  .listar-account .empty-message {
+    text-align: center;
+    margin-top: 20px;
+    color: #888;
+  }

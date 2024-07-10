@@ -121,6 +121,16 @@ export const addAccount = async (data) => {
     }
 }
 
+export const getAccount = async () => {
+    try {
+      const response = await apiClient.get("/account");
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching accounts:", error); 
+      throw error; 
+    }
+  };
+
 
 export const EditUser = async (data) => {
     try {
