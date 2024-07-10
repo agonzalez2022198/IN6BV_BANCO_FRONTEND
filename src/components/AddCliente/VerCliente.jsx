@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-import axios from "axios";
 import { useGetUser } from "../../shared/hooks/useGetUser";
+import { Link } from "react-router-dom";
 import "./verCliente.css";
 
 export const VerClientes = () => {
@@ -12,34 +12,25 @@ export const VerClientes = () => {
     const [itemsPerPage] = useState(5);
 
     useEffect(() => {
-        getUser(); 
+        getUser();
     }, []);
 
     useEffect(() => {
-        console.log("Clientes: ", clientes);
-    
         if (clientes.length > 0) {
             const results = clientes.filter(cliente =>
                 cliente.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 cliente.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 cliente.DPI.toLowerCase().includes(searchTerm.toLowerCase())
             );
-    
-            console.log("Filtered Results: ", results);
             setFilteredClientes(results);
             setCurrentPage(1);
         }
     }, [searchTerm, clientes]);
-    
-
-    const handleEdit = (id) => {
-        console.log(`Editar cliente con ID: ${id}`);
-    };
 
     const handleDelete = async (id) => {
         if (window.confirm("¿Estás seguro de que deseas eliminar este cliente?")) {
             try {
-                await axios.delete(`http://your-api-endpoint.com/api/users/${id}`); // Reemplaza con tu URL de backend
+                await axios.delete(`http://your-api-endpoint.com/api/users/${id}`);
                 setFilteredClientes(filteredClientes.filter(cliente => cliente._id !== id));
                 toast.success("Cliente eliminado con éxito");
             } catch (error) {
@@ -59,8 +50,6 @@ export const VerClientes = () => {
     const indexOfFirstCliente = indexOfLastCliente - itemsPerPage;
     const currentClientes = filteredClientes.slice(indexOfFirstCliente, indexOfLastCliente);
 
-    console.log("Current Page: ", currentPage);
-    console.log("Current Clients: ", currentClientes);
     return (
         <div className="ver-clientes-container">
             <h1>Clientes de KIBANK</h1>
@@ -92,7 +81,11 @@ export const VerClientes = () => {
                                 <td>{cliente.correo}</td>
                                 <td>{cliente.celular}</td>
                                 <td>
-                                    <button className="edit-button" onClick={() => handleEdit(cliente._id)}>Editar</button>
+                                    <Link to={`/PrincipalAdminPage/editar-cliente/${cliente._id}`} state={{ clienteId: cliente._id }}>
+                                        <button className="edit-button">
+                                            Editar
+                                        </button>
+                                    </Link>
                                     <button className="delete-button" onClick={() => handleDelete(cliente._id)}>Eliminar</button>
                                 </td>
                             </tr>

@@ -38,7 +38,7 @@ export const register = async (data) => {
 
 export const getUserById = async (id) => {
     try {
-        return await apiClient.get('/user/', id);
+        return await apiClient.get('/user/id', id);
     } catch (e) {
         return {
             error: true,
@@ -101,6 +101,18 @@ export const getTransfer = async () => {
 export const addAccount = async (data) => {
     try {
         return await apiClient.post("/account/acc", data);
+    } catch (e) {
+        return{
+            error: true,
+            e
+        }
+    }
+}
+
+
+export const EditUser = async (data) => {
+    try {
+        return await apiClient.put("/user/put", data)
     } catch (e) {
         return{
             error: true,

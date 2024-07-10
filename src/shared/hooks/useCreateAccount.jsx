@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { addAccount } from "../../services/api"; 
 
 export const useCreateAccount = () => {
-    const [formData, setFormData] = useState({
+    const initialFormData = {
         accountNumber: "",
         typeAccount: "",
         dpi: "",
         money: ""
-    });
+    };
 
+    const [formData, setFormData] = useState(initialFormData);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState(null);
     const [submitSuccess, setSubmitSuccess] = useState(null);
@@ -33,6 +34,7 @@ export const useCreateAccount = () => {
                 throw new Error(response.e.message);
             }
             setSubmitSuccess(response.data);
+            setFormData(initialFormData); 
         } catch (error) {
             setSubmitError(error);
         } finally {

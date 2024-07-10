@@ -1,5 +1,5 @@
 import React from "react";
-import { useCreateAccount } from "../../shared/hooks/useCreateAccount.jsx";
+import { useCreateAccount } from "../../shared/hooks/useCreateAccount";
 import "./bankAccount.css";
 
 export const CreateAccount = () => {
@@ -36,7 +36,7 @@ export const CreateAccount = () => {
                     >
                         <option value="">Seleccionar Tipo de Cuenta</option>
                         <option value="Ahorros">Ahorros</option>
-                        <option value="Corriente">Corriente</option>
+                        <option value="Monetaria">Monetaria</option>
                     </select>
                 </div>
                 <div className="form-group">
@@ -46,8 +46,6 @@ export const CreateAccount = () => {
                         name="dpi"
                         value={formData.dpi}
                         onChange={handleChange}
-                        pattern="\d+\s*dpi"
-                        title="Ingrese un número seguido de 'dpi' (ej. 300 dpi)"
                         required
                     />
                 </div>
@@ -67,7 +65,7 @@ export const CreateAccount = () => {
                     {isSubmitting ? "Creando..." : "Crear Cuenta Bancaria"}
                 </button>
                 {submitError && <p className="error">Error al crear la cuenta: {submitError.message}</p>}
-                {submitSuccess && <p className="success">Cuenta creada exitosamente: {submitSuccess.message}</p>}
+                {submitSuccess && <p className="success">Cuenta creada exitosamente</p>}
             </form>
         </div>
     );

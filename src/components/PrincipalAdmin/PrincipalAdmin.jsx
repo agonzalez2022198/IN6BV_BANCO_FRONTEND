@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Link, Routes, Route } from "react-router-dom";
 import './principalAdmin.css';
 import { AddCliente } from "../AddCliente/AddCliente";
-import { VerClientes } from "../AddCliente/VerCliente";
+import { VerClientes } from "../AddCliente/VerCliente"; // Verificar esta importación
 import { CreateAccount } from "../BankAccount/BankAccount";
 import { AllTransferPage } from "../../pages/Transfer/AllTransferPage";
+import { UpdateCliente } from "../AddCliente/UpdateCliente";
 
 const PrincipalAdmin = () => {
     const [expandedSections, setExpandedSections] = useState({
@@ -40,8 +41,8 @@ const PrincipalAdmin = () => {
                             <button onClick={() => toggleSection('cuenta')}>Cuenta</button>
                             {expandedSections.cuenta && (
                                 <ul>
-                                    <li><Link to="/PrincipalAdminPage/addTipoCuenta">Añadir Tipos de Cuenta</Link></li>
-                                    <li><Link to="/PrincipalAdminPage/Cuenta">Cuentas</Link></li>
+                                    <li><Link to="/PrincipalAdminPage/seeAccounts">Ver cuentas</Link></li>
+                                    <li><Link to="/PrincipalAdminPage/Cuenta">AddAccount</Link></li>
                                 </ul>
                             )}
                         </li>
@@ -70,19 +71,21 @@ const PrincipalAdmin = () => {
                 <Routes>
                     <Route path="/addCliente" element={<AddCliente />} />
                     <Route path="/verClientes" element={<VerClientes />} />
-                    <Route path="/addTipoCuenta" element={<AddTipoCuenta />} />
+                    <Route path="/seeAccounts" element={<AddTipoCuenta />} />
                     <Route path="/verDepositos" element={<AllTransferPage />} />
                     <Route path="/verRegistrosVariasPersonas" element={<VerRegistrosVariasPersonas />} />
                     <Route path="/cuenta" element={<CreateAccount />} />
+                    <Route path="/editar-cliente/:id" element={<UpdateCliente />} /> {/* Definir ruta con parámetro */}
                 </Routes>
             </main>
         </div>
     );
 };
 
-const AddTipoCuenta = () => <div>Añadir Tipos de Cuenta</div>;
+const AddTipoCuenta = () => <div>Ver cuentas</div>;
 const VerRegistrosPersona = () => <div>Ver Registros de una Persona</div>;
 const VerRegistrosVariasPersonas = () => <div>Ver Registros de Varias Personas</div>;
 const Editar = () => <div>Editar Más</div>;
+const UpdateClient = () => <div>Update User</div>;
 
 export { PrincipalAdmin };
